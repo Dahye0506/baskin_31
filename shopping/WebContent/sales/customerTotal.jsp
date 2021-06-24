@@ -19,7 +19,7 @@
                hAxis: {title: '사용자'}, 
                seriesType: 'bars',
                series: {5: {type: 'line'}}
-            };
+            };  
          
          var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
          chart.draw(data, options);
