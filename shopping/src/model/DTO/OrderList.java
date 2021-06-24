@@ -9,8 +9,14 @@ public class OrderList {
 	String prodSupplyer;
 	String purchaseTotprice;
 	String prodImage;
-	
-	
+    String reviewContent;
+    
+    public String getReviewContent() {
+        return reviewContent;
+    }
+    public void setReviewContent(String reviewContent) {
+        this.reviewContent = reviewContent;
+    }
 	public String getPurchaseDate() {
 		return purchaseDate;
 	}

@@ -14,10 +14,7 @@ import model.DTO.ProductReviewDTO;
 
 public class GoodsReviewPage {
 	public void review(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 		
-		String memId = authInfo.getUserId();
 		//리뷰 저장파일
 		String path = "goods/review";
 		String realPath = request.getServletContext().getRealPath(path);
@@ -27,7 +24,6 @@ public class GoodsReviewPage {
 		multi = new MultipartRequest(request,realPath,size,"utf-8",new DefaultFileRenamePolicy());
 		//
 		ProductReviewDTO dto = new ProductReviewDTO();
-		dto.setMemId(memId);
 		dto.setProdNum(request.getParameter("prodNum"));
 		dto.setPurchaseNum(request.getParameter("purchaseNum"));
 		dto.setReviewContent(multi.getParameter("reviewContent"));

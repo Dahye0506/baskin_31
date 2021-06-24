@@ -6,8 +6,8 @@ public class PaymentDTO {
 	String paymentMethod;
 	String paymentApprPrice;
 	String paymentApprNum;
-	String paymentDate;
-	String payMentNumber;
+	String paymentApprDate;
+	String paymentNumber;	
 	public String getPurchaseNum() {
 		return purchaseNum;
 	}
@@ -38,17 +38,17 @@ public class PaymentDTO {
 	public void setPaymentApprNum(String paymentApprNum) {
 		this.paymentApprNum = paymentApprNum;
 	}
-	public String getPaymentDate() {
-		return paymentDate;
+	public String getPaymentApprDate() {
+		return paymentApprDate;
 	}
-	public void setPaymentDate(String paymentDate) {
-		this.paymentDate = paymentDate;
+	public void setPaymentApprDate(String paymentApprDate) {
+		this.paymentApprDate = paymentApprDate;
 	}
-	public String getPayMentNumber() {
-		return payMentNumber;
+	public String getPaymentNumber() {
+		return paymentNumber;
 	}
-	public void setPayMentNumber(String payMentNumber) {
-		this.payMentNumber = payMentNumber;
+	public void setPaymentNumber(String paymentNumber) {
+		this.paymentNumber = paymentNumber;
 	}
 	
 	

@@ -10,9 +10,10 @@
 <body>
 주문서
 <hr />
+<p>
 1. 주문 상품<br />
 <form action="goodsOrder.gd" method="post">
-<table width="600">
+<table border="1" width="600" algin="center">
 		<tr><td colspan="2">상품정보</td>
 			<td>적용금액</td><td>판매자</td><td>배송비</td></tr>
 <c:set var="cartPrice" value="0"/>
@@ -34,15 +35,22 @@
 <c:set var="prodNums" value="${prodNums += dto.productDTO.prodNum += ','}" />
 </c:forEach>	
 </table>
+
 <table width="600">
 	<tr><td>상품금액<br />${cartPrice }</td>
 		<td>+</td><td>배송비<br />${prodDelFee }</td>
-		<td>=</td><td>최종결제금액<br />${cartPrice + prodDelFee }
-			<input type="text" name="purchaseTotPrice" 
-				value="${cartPrice + prodDelFee }" />
-			<input type="text" name="prodNums" value="${prodNums }" />
-			</td></tr>
+		<td>=</td>
+		<td>최종결제금액<br />
+			${cartPrice + prodDelFee }
+			<input type="hidden" name="purchaseTotPrice" value="${cartPrice + prodDelFee }" />
+			<input type="hidden" name="prodNums" value="${prodNums }" />
+			</td>
+	</tr>
 </table>
+</p>
+<hr />
+<p>
+2. 배송지 정보 입력
 <table>
 	<tr><td>이름</td>
 		<td><input type="text" name="receiveName" /></td></tr>
@@ -62,6 +70,7 @@
 </table>
 <table><tr><td><input type="submit" value="결제하기"/></td></tr>
 </table>
+</p>
 </form>
 </body>
 </html>

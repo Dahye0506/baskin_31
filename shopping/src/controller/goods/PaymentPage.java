@@ -18,9 +18,9 @@ public class PaymentPage {
 		PaymentDTO dto = new PaymentDTO();
 		//3
 		dto.setMemId(memId);
-		dto.setPaymentApprPrice(request.getParameter("paymentApprPrice"));
+		dto.setPaymentApprPrice(request.getParameter("paymentApprPrice"));//${money값받아오는곳 }
 		dto.setPaymentMethod("카드");
-		dto.setPayMentNumber(request.getParameter("paymentNumber"));
+		dto.setPaymentNumber(request.getParameter("paymentNumber"));
 		dto.setPurchaseNum(request.getParameter("purchaseNum"));
 
 		//4 다오

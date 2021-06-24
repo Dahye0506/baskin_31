@@ -20,16 +20,13 @@ public class GoodsController extends HttpServlet
 		if(command.equals("/goodsList.gd")) {
 			GoodsListPage action = new GoodsListPage();
 			action.goodsList(request);
-			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher("goods/goodsList.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("goods/goodsList.jsp");
 			dispatcher.forward(request, response);
 		}else if(command.equals("/goodsRegist.gd")) {
-			GoodsNumberPage action = 
-					new GoodsNumberPage();
+			GoodsNumberPage action = new GoodsNumberPage();
 			action.goodsNum(request);
 			response.setCharacterEncoding("utf-8");
-			RequestDispatcher dispatcher =
-					request.getRequestDispatcher("goods/goodsJoin.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("goods/goodsJoin.jsp");
 			dispatcher.include(request, response);
 		}else if(command.equals("/goodsJoin.gd")) {
 			GoodsJoinPage action = 	new GoodsJoinPage();
@@ -38,8 +35,7 @@ public class GoodsController extends HttpServlet
 		}else if(command.equals("/prodDetail.gd")) {
 			GoodsModifyPage action = new GoodsModifyPage();
 			action.goodsModify(request);
-			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher("goods/goodsModify.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("goods/goodsModify.jsp");
 			dispatcher.forward(request, response);
 		}else if(command.equals("/goodsModify.gd")) {
 			GoodsUpdatePage action = new GoodsUpdatePage();
@@ -53,20 +49,16 @@ public class GoodsController extends HttpServlet
 			response.setCharacterEncoding("utf-8");
 			GoodsModifyPage action = new GoodsModifyPage();
 			action.goodsModify(request);
-			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher("goods/goodsDetail.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("goods/goodsDetail.jsp");
 			dispatcher.include(request, response);
 		}else if(command.equals("/goodsCartAdd.gd")) {
-			GoodsCartAddPage action = 
-					new GoodsCartAddPage();
+			GoodsCartAddPage action = new GoodsCartAddPage();
 			action.cartAdd(request);
 			response.sendRedirect("goodsCartList.gd");
 		}else if(command.equals("/goodsCartList.gd")) {
 			GoodsCartList cartList = new  GoodsCartList();
 			cartList.cartList(request);
-			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher(
-							"goods/goodsCart.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("goods/goodsCart.jsp");
 			dispatcher.forward(request, response);
 		}else if(command.equals("/goodsCartQtyDown.gd")) {
 			GoodsCartQtyDownPage action = new GoodsCartQtyDownPage();
@@ -78,14 +70,14 @@ public class GoodsController extends HttpServlet
 			response.sendRedirect("goodsCartList.gd");
 		}else if(command.equals("/goodsBuy.gd")) {
 			GoodsBuyPage action = new GoodsBuyPage();
-			action.goodsBuy(request);
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("goods/buyFinished.jsp");
+			action.goodsBuy(request);			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("goods/order.jsp");
 			dispatcher.forward(request, response);
 		}else if(command.equals("/goodsOrder.gd")) {
 			GoodsOrderPage action = new GoodsOrderPage();
 			String [] purchaseNum = action.goodsOrder(request).split(",");
-			response.sendRedirect("paymentOk.gd?purchaseNum="+purchaseNum[0]+"&purchaseTotPrice="+purchaseNum[1]);
+			response.sendRedirect("paymentOk.gd?purchaseNum=" + purchaseNum[0]
+											+"&purchaseTotPrice="+purchaseNum[1]);
 		}else if(command.equals("/purchaseCon.gd")) {
 			//결제정보
 			PurchaseListConPage action = new PurchaseListConPage();
@@ -102,23 +94,32 @@ public class GoodsController extends HttpServlet
 			//2
 			PaymentPage action = new PaymentPage();
 			action.payment(request);
-			
 			//1
 			RequestDispatcher dispatcher = request.getRequestDispatcher("goods/buyFinished.jsp");
 			dispatcher.forward(request, response);
 		}else if(command.equals("/goodsReview.gd")) {
-			request.setAttribute("prodNum", request.getParameter("prodNum"));
-			request.setAttribute("purchaseNum", request.getParameter("purchaseNum"));
+			request.setAttribute("prodNum1", request.getParameter("prodNum"));
+			request.setAttribute("purchaseNum1", request.getParameter("purchaseNum"));
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("goods/goodsReview.jsp");
 			dispatcher.forward(request, response);
 		}else if(command.equals("/reviewWrite.gd")) {
 			GoodsReviewPage action = new GoodsReviewPage();
-			action.review(request);			
+			action.review(request);
 			
 			//1. 리뷰 작성후 구매 확인 페이지로 이동
 			response.sendRedirect("purchaseCon.gd");
-		}
+		}else if(command.equals("/goodsReviewUpdate.gd")) {
+			GoodsReviewInfoPage action = new GoodsReviewInfoPage();
+            action.reviewInfo(request);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("goods/goodsReviewModify.jsp");
+            dispatcher.forward(request, response);
+        }else if(command.equals("/reviewUpdate.gd")) {
+            GoodsReviewWritePage action = new GoodsReviewWritePage();
+            action.reviewUpdate(request);
+            response.sendRedirect("purchaseCon.gd");
+        }
+		
 		
 			
 	}

@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% pageContext.setAttribute("namebr", "\n"); %>
 <!DOCTYPE html>
 <html>
+<!--                        "속성명",  "bd \n에 대한" -->
+<!-- db에서는 '\n'은 엔터효과지만 html 에서는 인식 X 그래서 'br'로 바꿔줘야한다.  -->
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -57,5 +61,17 @@ ${dto.ctgr }의 ${dto.prodName } 상품 설명입니다.
 		</td></tr>
 </table>
 </form>
+리뷰
+<hr />
+
+<c:forEach items="${list }" var="dto">
+	${dto.memId } / ${dto.reviewDate }<br/>
+	${fn:replace(dto.reviewContent, namebr, "<br />") }<br />
+	<c:if test="${dto.reviewImg != null }">
+		<img src="goodss/review/${dto.reviewImg }" />
+	</c:if>
+
+</c:forEach>
+
 </body>
 </html>

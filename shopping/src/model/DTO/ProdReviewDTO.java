@@ -1,30 +1,25 @@
 package model.DTO;
 
-public class ProductReviewDTO {
-	String purchaseNum;
+import java.util.Date;
+
+public class ProdReviewDTO {
 	String prodNum;
-	String reviewDate;
+	String memId;
 	String reviewContent;
 	String reviewImg;
+	Date reviewDate;
 	
-	
-	public String getPurchaseNum() {
-		return purchaseNum;
-	}
-	public void setPurchaseNum(String purchaseNum) {
-		this.purchaseNum = purchaseNum;
-	}
 	public String getProdNum() {
 		return prodNum;
 	}
 	public void setProdNum(String prodNum) {
 		this.prodNum = prodNum;
 	}
-	public String getReviewDate() {
-		return reviewDate;
+	public String getMemId() {
+		return memId;
 	}
-	public void setReviewDate(String reviewDate) {
-		this.reviewDate = reviewDate;
+	public void setMemId(String memId) {
+		this.memId = memId;
 	}
 	public String getReviewContent() {
 		return reviewContent;
@@ -38,5 +33,10 @@ public class ProductReviewDTO {
 	public void setReviewImg(String reviewImg) {
 		this.reviewImg = reviewImg;
 	}
-
+	public Date getReviewDate() {
+		return reviewDate;
+	}
+	public void setReviewDate(Date reviewDate) {
+		this.reviewDate = reviewDate;
+	}
 }
