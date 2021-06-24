@@ -7,7 +7,14 @@ public class OrderList {
 	String purchaseNum;
 	String prodName;
 	String prodSupplyer;
-	String purchaseTotprice;
+	String purchaseTotPrice;
+	
+	public String getPurchaseTotPrice() {
+		return purchaseTotPrice;
+	}
+	public void setPurchaseTotPrice(String purchaseTotPrice) {
+		this.purchaseTotPrice = purchaseTotPrice;
+	}
 	String prodImage;
     String reviewContent;
     
@@ -53,12 +60,7 @@ public class OrderList {
 	public void setProdSupplyer(String prodSupplyer) {
 		this.prodSupplyer = prodSupplyer;
 	}
-	public String getPurchaseTotprice() {
-		return purchaseTotprice;
-	}
-	public void setPurchaseTotprice(String purchaseTotprice) {
-		this.purchaseTotprice = purchaseTotprice;
-	}
+
 	public String getProdImage() {
 		return prodImage;
 	}

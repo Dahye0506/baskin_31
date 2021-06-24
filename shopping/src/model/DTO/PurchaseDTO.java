@@ -10,6 +10,7 @@ public class PurchaseDTO {
    String purchaseDate;
    String receiverName;
    String receiverPhone;
+   
    public String getPurchaseNum() {
 		return purchaseNum;
 	}

@@ -7,14 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h2>리뷰 작성페이지</h2>
 <form action="reviewWrite.gd" method="post" enctype="multipart/form-data">
-<inpur type="hidden" name="prodNum" value="${pordNum }" />
-<inpur type="hidden" name="purchaseNum" value="${purchaseNum }" />
-
-<table>
-	<tr><td>리뷰작성</td><td row="5" cols="30" name="reviewContent"></td></tr>
-	<tr><td>파일</td><td><input type="file" name="reviewImg" /></td></tr>
-	<tr><td colspan="2"><input type="submit" name="리뷰 등록" /></td></tr>
+<input type="hidden" name="prodNum" value="${prodNum1 }"/>
+<input type="hidden" name="purchaseNum" value="${purchaseNum1 }" />
+<table border="1">
+	<tr><td>리뷰작성</td>
+	    <td><textarea rows="5" cols="30" name="reviewContent"></textarea></td></tr>
+	<tr><td>파일</td>
+		<td>
+			<input type="file" name="reviewImg" />
+		</td></tr>
+	<tr><td colspan="2"><input type="submit" value="리뷰등록" /></td></tr>		
 </table>
 </form>
 </body>

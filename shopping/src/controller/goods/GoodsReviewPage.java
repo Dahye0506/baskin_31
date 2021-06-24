@@ -1,38 +1,40 @@
 package controller.goods;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import model.DTO.AuthInfo;
+import model.DAO.GoodsDAO;
 import model.DTO.ProductReviewDTO;
-
 
 public class GoodsReviewPage {
 	public void review(HttpServletRequest request) {
-		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		}
 		//리뷰 저장파일
 		String path = "goods/review";
 		String realPath = request.getServletContext().getRealPath(path);
-		int size = 1024*1024*5; //5메가
-		try {
+		int size = 1024 * 1024 * 5; //5메가
 		MultipartRequest multi = null;
-		multi = new MultipartRequest(request,realPath,size,"utf-8",new DefaultFileRenamePolicy());
-		//
-		ProductReviewDTO dto = new ProductReviewDTO();
-		dto.setProdNum(request.getParameter("prodNum"));
-		dto.setPurchaseNum(request.getParameter("purchaseNum"));
-		dto.setReviewContent(multi.getParameter("reviewContent"));
-		
+		ProductReviewDTO dto =  new ProductReviewDTO();
+		try {
+			multi = new MultipartRequest(request,realPath,size,"utf-8",new DefaultFileRenamePolicy());
+			dto.setReviewImg(multi.getFilesystemName("reviewImg"));
+			dto.setProdNum(multi.getParameter("prodNum"));
+			dto.setPurchaseNum(multi.getParameter("purchaseNum"));
+			dto.setReviewContent(multi.getParameter("reviewContent"));
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
-		
-		
+		GoodsDAO dao = new GoodsDAO();
+		dao.reviewInsert(dto);
 	}
 
 }

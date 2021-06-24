@@ -123,10 +123,10 @@ public class GoodsDAO extends DataBaseInfo{
 	               +" where substr(PAYMENT_APPR_NUM, 1, 8)"
 	               +" = to_char(sysdate,'yyyymmdd')";
 		
-		sql = " insert into payment(PURCHASE_NUM, MEM_ID, PAYMENT_METHOD, "
-			+ " PAYMENT_APPR_PRICE, PAYMENT_APPR_NUM, PAYMENT_APPR_DATE, "
-			+ " PAYMENT_NUMBER) "
-			+ " values (?, ?, ?, ?, (" + num + "), sysdate, ? )";
+		sql = " insert into payment (PURCHASE_NUM,MEM_ID,PAYMENT_METHOD,"
+				+ "                  PAYMENT_APPR_PRICE,PAYMENT_APPR_NUM,"
+				+ "					 PAYMENT_APPR_DATE, PAYMENT_NUMBER ) "
+			+ " values (?, ?, ?, ?, ( "+ num +" ), sysdate, ?  )"; 
 		getConnect();
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -171,7 +171,7 @@ public class GoodsDAO extends DataBaseInfo{
 				dto.setProdNum(rs.getString("prod_Num"));
 				dto.setProdSupplyer(rs.getString("prod_Supplyer"));
 				dto.setPurchaseDate(rs.getString("purchase_Date"));
-				dto.setPurchaseTotprice(rs.getString("purchase_Tot_Price"));
+				dto.setPurchaseTotPrice(rs.getString("purchase_Tot_Price"));
 				dto.setPurchaseNum(rs.getString("purchase_Num"));
 				dto.setReviewContent(rs.getString("review_Content"));
 				list.add(dto);				
@@ -228,7 +228,7 @@ public class GoodsDAO extends DataBaseInfo{
 	public void purchaseInsert(PurchaseDTO dto) {
 		sql = " insert into purchase (PURCHASE_NUM,MEM_ID,"
 			+ " PURCHASE_TOT_PRICE, PURCHASE_ADDR, PURCHASE_METHOD,"
-			+ " PURCAHSE_REQUEST,RECEIVER_NAME,RECEIVER_PHONE,"
+			+ " PURCHASE_REQUEST,RECEIVER_NAME,RECEIVER_PHONE,"
 			+ " PURCHASE_DATE) "
 			+ " values(?,?,?,?,?,?,?,?,sysdate)";
 		getConnect();

@@ -81,7 +81,7 @@ public class GoodsController extends HttpServlet
 		}else if(command.equals("/purchaseCon.gd")) {
 			//결제정보
 			PurchaseListConPage action = new PurchaseListConPage();
-			action.pruchaseList(request);
+			action.purchaseList(request);
 			//1
 			RequestDispatcher dispatcher = request.getRequestDispatcher("goods/purchaseCon.jsp");
 			dispatcher.forward(request, response);
@@ -106,22 +106,21 @@ public class GoodsController extends HttpServlet
 		}else if(command.equals("/reviewWrite.gd")) {
 			GoodsReviewPage action = new GoodsReviewPage();
 			action.review(request);
-			
 			//1. 리뷰 작성후 구매 확인 페이지로 이동
 			response.sendRedirect("purchaseCon.gd");
 		}else if(command.equals("/goodsReviewUpdate.gd")) {
-			GoodsReviewInfoPage action = new GoodsReviewInfoPage();
-            action.reviewInfo(request);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("goods/goodsReviewModify.jsp");
-            dispatcher.forward(request, response);
-        }else if(command.equals("/reviewUpdate.gd")) {
-            GoodsReviewWritePage action = new GoodsReviewWritePage();
-            action.reviewUpdate(request);
-            response.sendRedirect("purchaseCon.gd");
-        }
-		
-		
-			
+			GoodsReviewInfoPage action =
+					new GoodsReviewInfoPage();
+			action.reviewInfo(request);
+			RequestDispatcher dispatcher =
+		request.getRequestDispatcher("goods/goodsReviewModify.jsp");
+			dispatcher.forward(request, response);
+		}else if(command.equals("/reviewUpdate.gd")) {
+			GoodsReviewWritePage action =
+					new GoodsReviewWritePage();
+			action.reviewUpdate(request);
+			response.sendRedirect("purchaseCon.gd");
+		}
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, 

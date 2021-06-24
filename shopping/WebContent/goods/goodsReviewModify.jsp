@@ -10,7 +10,7 @@
 <form action="reviewUpdate.gd" method="post" >
 <input type="hidden" name="prodNum1" value="${dto.prodNum }"/>
 <input type="hidden" name="purchaseNum1" value="${dto.purchaseNum }" />
-<table >
+<table border="1">
 	<tr><td>리뷰작성</td>
 	    <td><textarea rows="5" cols="30" name="reviewContent">${dto.reviewContent }</textarea></td></tr>
 	<tr><td colspan="2"><input type="submit" value="리뷰등록" /></td></tr>		
