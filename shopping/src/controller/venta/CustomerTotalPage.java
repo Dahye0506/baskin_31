@@ -14,7 +14,7 @@ public class CustomerTotalPage {
 		String googleList = "[['아이디/이름', '총구매금액', '총 횟수','평균금액']";
 		for(CustomerTotalDTO dto : list) {
 			googleList += ",['" + dto.getMemId() + "/"
-					   + dto.getMemName() + "','" 
+					   + dto.getMemName() + "'," 
 					   + dto.getSumPrice() + "," + dto.getCount()
 					   + "," + dto.getAvg() + "]";
 		}//여기까지 for문
@@ -24,3 +24,4 @@ public class CustomerTotalPage {
 	}
 
 }
+

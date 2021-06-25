@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.catalina.connector.Request;
+
 import model.DTO.MemberDTO;
 
 public class MemberDAO {
@@ -43,6 +45,34 @@ public class MemberDAO {
 		if(conn != null)	try {conn.close();} 
 						catch (SQLException e) {}
 	}
+	public void idFind(MemberDTO dto) {//MemberDTO dto
+		//IdSearchPage 에 idFid으로 담아짐
+		
+		sql = " select mem_id, mem_name from member "
+			+ " where mem_address = ? ane mem_phone = ?"
+			+ " and mem_email =? ";
+		System.out.println();
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getMemAddress());
+			pstmt.setString(2, dto.getMemPhone());
+			pstmt.setString(3, dto.getMemEmail());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				//dto에서 dto로 받아왔기때문에 리턴할필요없다.
+				dto.setMemId(rs.getString(1));
+				dto.setMemName(rs.getString(2));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}
+	
+	
 	public void pwChange(String memId, String memPw) {
 		sql = " update member "
 			+ " set mem_pw = ? "

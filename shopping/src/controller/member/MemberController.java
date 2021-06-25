@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.main.IdSearchPage;
+
 public class MemberController extends HttpServlet 
 	implements Servlet{
 	private void doProcess(HttpServletRequest request, 
@@ -116,6 +118,19 @@ public class MemberController extends HttpServlet
 				dispatcher.forward(request, response);
 			}
 		}
+		else if(command.equals("/idSearch.mem")) {
+			RequestDispatcher dispatcher =
+					request.getRequestDispatcher("member/idSearch2.jsp");
+			dispatcher.forward(request, response);
+			
+		}else if(command.equals("/idFind.mem")) {
+			IdSearchPage action = new IdSearchPage();
+			action.idFind(request);
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("member/idFind.jsp");
+			dispatcher.forward(request, response);
+		}
+		
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, 

@@ -46,6 +46,15 @@ public void doProcess(HttpServletRequest request, HttpServletResponse response)
 			action.execute(request);
 			response.sendRedirect("venta.vnt");
 		}
+		///상품별 판매 현황
+		else if(command.equals("/productTypeTotal.vnt")) {
+			ProductTotalPage action = new ProductTotalPage();
+			action.productTotPage(request);
+			
+			//상품별 판매현황으로 이동
+			RequestDispatcher dispatcher = request.getRequestDispatcher("sales/productTypeTotal.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 	
 	@Override

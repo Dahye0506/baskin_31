@@ -83,10 +83,12 @@ public class SalesDAO extends DataBaseInfo{//데이터 베이스 상속
 	public List<CustomerTotalDTO> customerTotal() {
 		List<CustomerTotalDTO> list = new ArrayList<CustomerTotalDTO>();
 		sql = " select m.mem_id, mem_name, sum(purchase_tot_price), "
-			+ " count(*), avg(purchase_tot_price) "
+			+ " count(*), trunc(avg(purchase_tot_price)) "
 			+ " from purchase pu, member m "
 			+ " where m.mem_id = pu.mem_id "
 			+ " group by m.mem_id, m.mem_name ";
+
+
 		
 		getConnect();
 		try {
