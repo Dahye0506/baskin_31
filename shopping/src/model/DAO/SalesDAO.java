@@ -87,9 +87,6 @@ public class SalesDAO extends DataBaseInfo{//데이터 베이스 상속
 			+ " from purchase pu, member m "
 			+ " where m.mem_id = pu.mem_id "
 			+ " group by m.mem_id, m.mem_name ";
-
-
-		
 		getConnect();
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -111,7 +108,6 @@ public class SalesDAO extends DataBaseInfo{//데이터 베이스 상속
 		return list;
 	}
 	public List<ClientSalesDTO> salesList(String memId){
-		System.out.println("adadad" + memId);
 		List<ClientSalesDTO> list = new ArrayList<ClientSalesDTO>();
 		//sql문 작성
 		sql = "select m.mem_id, mem_name, mem_phone,"

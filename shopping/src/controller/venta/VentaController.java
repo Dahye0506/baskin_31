@@ -28,7 +28,7 @@ public void doProcess(HttpServletRequest request, HttpServletResponse response)
 			action.userSales(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("sales/userSales.jsp");//세일즈페이지가져오기
 			dispatcher.forward(request, response);
-		}else if(command.equals("/customerTotal.vnt")) {//메인-판매현황 클릭
+		}else if(command.equals("/customerTotal.vnt")) {//메인-판매현황-고객별판매현황 클릭
 			CustomerTotalPage action = new CustomerTotalPage();
 			action.customerTotal(request);
 			
