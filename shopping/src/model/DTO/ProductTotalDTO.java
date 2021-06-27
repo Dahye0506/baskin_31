@@ -4,14 +4,9 @@ public class ProductTotalDTO {
 	String prodNum;
 	String prodName;
 	String prodPrice;
-	String sumPrice;
+	String prodSumPrice;
+	String count;
 	
-	public String getSumPrice() {
-		return sumPrice;
-	}
-	public void setSumPrice(String sumPrice) {
-		this.sumPrice = sumPrice;
-	}
 	
 	public String getProdNum() {
 		return prodNum;
@@ -30,6 +25,18 @@ public class ProductTotalDTO {
 	}
 	public void setProdPrice(String prodPrice) {
 		this.prodPrice = prodPrice;
+	}
+	public String getProdSumPrice() {
+		return prodSumPrice;
+	}
+	public void setProdSumPrice(String prodSumPrice) {
+		this.prodSumPrice = prodSumPrice;
+	}
+	public String getCount() {
+		return count;
+	}
+	public void setCount(String count) {
+		this.count = count;
 	}
 	
 	

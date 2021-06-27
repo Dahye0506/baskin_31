@@ -13,12 +13,12 @@ public class ProductTotalPage {
 		//sql문 받아올곳
 		ProductDAO dao = new ProductDAO();
 		List<ProductTotalDTO> list = dao.productTotPage(); 
-		String googleList = "[['상품번호', '상품이름', '상품금액','총금액']";
+		String googleList = "[['상품번호/상품명', '제품금액', '총구매금액','총 횟수']";
 		for(ProductTotalDTO dto : list) {
-			googleList += ",['" + dto.getProdNum() + "',"
-					   + "'"+ dto.getProdName() + "'," 
-					   + dto.getProdPrice() + "," + dto.getSumPrice()
-					   +  "]";
+			googleList += ",['" + dto.getProdNum() + "/"
+					   + dto.getProdName() + "'," 
+					   + dto.getProdPrice() + "," + dto.getProdSumPrice()
+					   + "," + dto.getCount() + "]";
 		}
 		googleList+="]";// 맨앞에[ 열어준거 닫기
 		request.setAttribute("googleList", googleList);

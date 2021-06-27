@@ -9,12 +9,11 @@ import model.DTO.ProductTotalDTO;
 public class ProductDAO extends DataBaseInfo {
 	public List<ProductTotalDTO> productTotPage(){
 		List<ProductTotalDTO> list = new ArrayList<ProductTotalDTO>();
-		sql = "select prod.prod_num, PROD.PROD_NAME, PROD.PROD_PRICE, SUM(prod.prod_price) "
-			+ "FROM PRODUCTS PROD, PURCHASE_LIST PUL "
-			+ "WHERE PROD.PROD_NUM = PUL.PROD_NUM "
-			+ "GROUP BY prod.prod_num, PROD.PROD_NAME, PROD.PROD_PRICE "
-			+ "ORDER BY SUM(prod.prod_price) desc";
-		
+		sql = "select prod.prod_num, PROD.PROD_NAME, PROD.PROD_PRICE, SUM(prod_price), COUNT(*) "
+			+ "    FROM products prod, purchase_list pul "
+			+ "    WHERE prod.prod_num = pul.prod_num "
+			+ "	GROUP BY prod.prod_num, PROD.PROD_NAME, PROD.PROD_PRICE " ;
+
 		getConnect();
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -24,7 +23,8 @@ public class ProductDAO extends DataBaseInfo {
 				dto.setProdNum(rs.getString(1));
 				dto.setProdName(rs.getString(2));
 				dto.setProdPrice(rs.getString(3));
-				dto.setSumPrice(rs.getString(4));
+				dto.setProdSumPrice(rs.getString(4));
+				dto.setCount(rs.getString(5));
 				list.add(dto);
 			}
 		} catch (SQLException e) {

@@ -123,18 +123,17 @@ public class GoodsDAO extends DataBaseInfo{
 	               +" where substr(PAYMENT_APPR_NUM, 1, 8)"
 	               +" = to_char(sysdate,'yyyymmdd')";
 		
-		sql = " insert into payment (PURCHASE_NUM,MEM_ID,PAYMENT_METHOD,"
+		sql = " insert into payment (PURCHASE_NUM,PAYMENT_METHOD,"
 				+ "                  PAYMENT_APPR_PRICE,PAYMENT_APPR_NUM,"
 				+ "					 PAYMENT_APPR_DATE, PAYMENT_NUMBER ) "
-			+ " values (?, ?, ?, ?, ( "+ num +" ), sysdate, ?  )"; 
+			+ " values (?, ?, ?, ( "+ num +" ), sysdate, ?  )"; 
 		getConnect();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getPurchaseNum());
-			pstmt.setString(2, dto.getMemId());
-			pstmt.setString(3, dto.getPaymentMethod());
-			pstmt.setString(4, dto.getPaymentApprPrice());
-			pstmt.setString(5, dto.getPaymentNumber());
+			pstmt.setString(2, dto.getPaymentMethod());
+			pstmt.setString(3, dto.getPaymentApprPrice());
+			pstmt.setString(4, dto.getPaymentNumber());
 			int i = pstmt.executeUpdate();
 			System.out.println(i + "개 행이 저장되었습니다.");
 		} catch (SQLException e) {
@@ -486,6 +485,7 @@ public class GoodsDAO extends DataBaseInfo{
 			+ "			  when 'cosmetic' then '화장품' "
 			+ "           when 'food' then '음식' "
 			+ "			  when 'car' then '자동차용품' " 
+			+ "			  when 'it' then '가전제품' " 
 			+ "           end CTGR1 "
 			+ " from products";
 		getConnect();

@@ -20,7 +20,7 @@ public class DataBaseInfo {
 	public static void getConnect() {
 		try {
 			Class.forName(jdbcDriver);
-			conn = DriverManager.getConnection(jdbcUrl, "subin", "oracle");
+			conn = DriverManager.getConnection(jdbcUrl, "subin", "ORACLE");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
